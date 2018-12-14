@@ -1,5 +1,5 @@
 //
-//  BD.swift
+//  DB.swift
 //  bmi
 //
 //  Created by Elena Melnikova on 2018-12-13.
@@ -13,7 +13,6 @@ class DB: Codable {
     var name: String = ""
     var age: Int = 0
     var genderMale: Bool = true
-    //var bmi: Set<BMIData> = []
     var bmi: [BMIData] = []
     
     func overwrite(bmiData: BMIData) {
@@ -115,18 +114,12 @@ class BMIData: Codable, Hashable {
         self.weight = weight
     }
     
-//    func setWeightLB(weight: Float) {
-//        self.weight = weight * 0.45359237
-//    }
     
     func setHeightM(height: Float) {
         self.height = height
     }
     
-//    func setHeightInch(height: Float) {
-//        self.height = height * 0.0254
-//    }
-    
+
     //Calculate BMI in metric
     func calcBMI() {
         self.bmi = self.weight / ( self.height * self.height )

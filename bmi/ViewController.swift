@@ -30,29 +30,22 @@ class ViewController: UIViewController {
         switchMetric.setOn(true, animated: true)
         lblWeightUom.text = "kg"
         lblHeightUom.text = "m"
-        
         update()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         update()
-        
     }
     
     func update() {
         let defaults = UserDefaults.standard
         let savedDB = defaults.string(forKey: "db") ?? ""
-        
         let date = DB.dateToString(date: datePicker.date)
         if !savedDB.isEmpty {
             db = DB.fromJson(jsonString: savedDB)
-        
             txtName.text = db.name
             txtAge.text = String(db.age)
             txtGender.text = db.genderMale ? "male" : "female"
-            
-            
             
             let UOM = UserDefaults.standard.string(forKey: "UOM") ?? ""
             if UOM.isEmpty {
@@ -194,7 +187,6 @@ class ViewController: UIViewController {
         
     }
     
-    // Function to prepare segue for Progress and Details View Controllers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? TableViewController
         var isMetric = true
