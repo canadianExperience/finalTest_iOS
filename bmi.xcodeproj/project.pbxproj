@@ -58,11 +58,11 @@
 			children = (
 				C035A9D121C3266D00FC02FB /* AppDelegate.swift */,
 				C035A9D321C3266D00FC02FB /* ViewController.swift */,
+				C035A9E321C3301700FC02FB /* BD.swift */,
 				C035A9D521C3266D00FC02FB /* Main.storyboard */,
 				C035A9D821C3266E00FC02FB /* Assets.xcassets */,
 				C035A9DA21C3266E00FC02FB /* LaunchScreen.storyboard */,
 				C035A9DD21C3266E00FC02FB /* Info.plist */,
-				C035A9E321C3301700FC02FB /* BD.swift */,
 			);
 			path = bmi;
 			sourceTree = "<group>";
