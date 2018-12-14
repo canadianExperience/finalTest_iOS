@@ -136,19 +136,22 @@
                                 <rect key="frame" x="20" y="617" width="95" height="30"/>
                                 <state key="normal" title="Calculate BMI"/>
                                 <connections>
-                                    <action selector="onCalculateBmi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0D6-OI-2BO"/>
+                                    <action selector="btnCalculate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c5G-7R-LWa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi8-P7-zmH">
                                 <rect key="frame" x="214" y="617" width="141" height="30"/>
                                 <state key="normal" title="BMI Tracking Screen"/>
                                 <connections>
-                                    <action selector="onBmiTrackingScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bA-xM-Mgm"/>
-                                    <segue destination="muC-ku-ZPv" kind="show" identifier="toTable" id="4IV-td-Ojt"/>
+                                    <action selector="btnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rc0-SX-c3i"/>
+                                    <segue destination="muC-ku-ZPv" kind="show" identifier="toTracking" id="4wc-BF-itH"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qg-qt-kg4">
                                 <rect key="frame" x="306" y="341" width="51" height="31"/>
+                                <connections>
+                                    <action selector="cangeUOM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7UU-2O-O0c"/>
+                                </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="txtAge" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRz-1Y-UOy">
                                 <rect key="frame" x="205" y="234" width="150" height="30"/>
@@ -209,13 +212,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="txtAge" destination="YRz-1Y-UOy" id="PJU-Rd-iPm"/>
-                        <outlet property="txtBmi" destination="ZA6-Ds-BNB" id="7sC-QI-c56"/>
-                        <outlet property="txtGender" destination="LD8-Bj-AJN" id="ipO-wm-5Le"/>
-                        <outlet property="txtHeight" destination="uzn-Nz-7wz" id="k4g-Ct-WHk"/>
-                        <outlet property="txtMessage" destination="V0I-pL-qgO" id="sOO-O3-b2X"/>
-                        <outlet property="txtName" destination="Lmi-Mu-dUj" id="Gib-SI-26D"/>
-                        <outlet property="txtWeight" destination="Rc2-nW-1EN" id="81a-6V-z3m"/>
+                        <outlet property="datePicker" destination="c1d-GR-kLo" id="vs7-yR-GLX"/>
+                        <outlet property="switchMetric" destination="7Qg-qt-kg4" id="UFf-Zs-3in"/>
+                        <outlet property="txtAge" destination="YRz-1Y-UOy" id="GPW-RF-ach"/>
+                        <outlet property="txtBmi" destination="ZA6-Ds-BNB" id="Izd-Ws-YGh"/>
+                        <outlet property="txtGender" destination="LD8-Bj-AJN" id="f6Y-Vd-Bbu"/>
+                        <outlet property="txtHeight" destination="uzn-Nz-7wz" id="tyI-c8-h9I"/>
+                        <outlet property="txtMessage" destination="V0I-pL-qgO" id="fZO-vo-m4b"/>
+                        <outlet property="txtName" destination="Lmi-Mu-dUj" id="5Hg-Vd-SS9"/>
+                        <outlet property="txtWeight" destination="Rc2-nW-1EN" id="dl1-pk-b5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
