@@ -15,6 +15,7 @@
 		C035A9E421C3301700FC02FB /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035A9E321C3301700FC02FB /* DB.swift */; };
 		C035A9E621C335F500FC02FB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035A9E521C335F500FC02FB /* TableViewController.swift */; };
 		C0B677D121C36FF900728978 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B677D021C36FF900728978 /* CustomTableViewCell.swift */; };
+		C0B677D321C3776300728978 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B677D221C3776300728978 /* UpdateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C035A9E321C3301700FC02FB /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		C035A9E521C335F500FC02FB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C0B677D021C36FF900728978 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		C0B677D221C3776300728978 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				C035A9DA21C3266E00FC02FB /* LaunchScreen.storyboard */,
 				C035A9DD21C3266E00FC02FB /* Info.plist */,
 				C0B677D021C36FF900728978 /* CustomTableViewCell.swift */,
+				C0B677D221C3776300728978 /* UpdateViewController.swift */,
 			);
 			path = bmi;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				C035A9D221C3266D00FC02FB /* AppDelegate.swift in Sources */,
 				C035A9E421C3301700FC02FB /* DB.swift in Sources */,
 				C035A9E621C335F500FC02FB /* TableViewController.swift in Sources */,
+				C0B677D321C3776300728978 /* UpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

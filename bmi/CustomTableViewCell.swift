@@ -9,16 +9,29 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
+    
+    var bmiData: BMIData = BMIData()
+    
+    @IBOutlet weak var lblDate: UILabel!
+    
+    @IBOutlet weak var lblWeight: UILabel!
+    
+    @IBOutlet weak var lblBmi: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //stepper.stepValue = 0
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
-    }
-
+        
+        
+}
 }

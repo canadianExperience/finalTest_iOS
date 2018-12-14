@@ -68,6 +68,28 @@ class DB: Codable {
         }
         return BMIData()  //Should never be called
     }
+    
+    static func kgToLb(_ kg: Float) -> Float {
+        return kg / 0.45359237
+    }
+    
+    static func lbToKg(_ lb: Float) -> Float {
+        return lb * 0.45359237
+    }
+    
+    static func meterToInch(_ meter: Float) -> Float {
+        return meter / 0.0254
+    }
+    
+    static func inchToMeter(_ inch: Float) -> Float {
+        return inch * 0.0254
+    }
+    
+    public static func dateToString(date: Date)->String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return df.string(from: date)
+    }
 }
 
 class BMIData: Codable, Hashable {
@@ -85,26 +107,25 @@ class BMIData: Codable, Hashable {
     }
     
     public func setDate(date: Date) {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        self.date = df.string(from: date)
+        let str = DB.dateToString(date: date)
+        self.date = str
     }
     
     func setWeightKG(weight: Float) {
         self.weight = weight
     }
     
-    func setWeightLB(weight: Float) {
-        self.weight = weight / 0.45359237
-    }
+//    func setWeightLB(weight: Float) {
+//        self.weight = weight * 0.45359237
+//    }
     
     func setHeightM(height: Float) {
         self.height = height
     }
     
-    func setHeightInch(height: Float) {
-        self.height = height / 0.0254
-    }
+//    func setHeightInch(height: Float) {
+//        self.height = height * 0.0254
+//    }
     
     //Calculate BMI in metric
     func calcBMI() {
@@ -130,5 +151,6 @@ class BMIData: Codable, Hashable {
             return "Obese Class 3"
         }
     }
+    
 }
 

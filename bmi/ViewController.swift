@@ -25,22 +25,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        switchMetric.setOn(true, animated: true)
+        
+        update()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        update()
+        
+    }
+    
+    func update() {
         let defaults = UserDefaults.standard
         let savedDB = defaults.string(forKey: "db") ?? ""
-
-        switchMetric.setOn(true, animated: true)
+        
+        let date = DB.dateToString(date: datePicker.date)
         if !savedDB.isEmpty {
             db = DB.fromJson(jsonString: savedDB)
+        
             txtName.text = db.name
             txtAge.text = String(db.age)
             txtGender.text = db.genderMale ? "male" : "female"
             
-            let lastIndex = db.bmi.count - 1
-            if lastIndex >= 0 {
-                txtWeight.text = String(db.bmi[lastIndex].weight)
-                txtHeight.text = String(db.bmi[lastIndex].height)
-                txtBmi.text = String(db.bmi[lastIndex].bmi)
-            }
+            //let lastIndex = db.bmi.count - 1
+//            if lastIndex >= 0 {
+//                txtWeight.text = String(db.bmi[lastIndex].weight)
+//                txtHeight.text = String(db.bmi[lastIndex].height)
+//                txtBmi.text = String(db.bmi[lastIndex].bmi)
+//            }
             
             
             let UOM = UserDefaults.standard.string(forKey: "UOM") ?? ""
@@ -51,9 +64,22 @@ class ViewController: UIViewController {
                     switchMetric.setOn(false, animated: true)
                 }
             }
+            txtWeight.text = ""
+            txtHeight.text = ""
+            txtBmi.text = ""
+            txtMessage.text = ""
         }
-
     }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     @IBAction func btnCalculate(_ sender: UIButton) {
         //Date
@@ -131,10 +157,11 @@ class ViewController: UIViewController {
             bmi.setHeightM(height: heightFloat)
             bmi.setWeightKG(weight: weightFloat)
         } else {
-            bmi.setHeightInch(height: heightFloat)
-            bmi.setWeightLB(weight: weightFloat)
+            bmi.setHeightM(height: DB.inchToMeter(heightFloat))
+            bmi.setWeightKG(weight: DB.lbToKg(weightFloat))
         }
         bmi.calcBMI()
+        txtBmi.text = String(bmi.bmi)
         txtMessage.text = bmi.getMsg()
         
         //Save data
@@ -143,22 +170,42 @@ class ViewController: UIViewController {
         let json = db.toJson()
         let defaults = UserDefaults.standard
         defaults.set(json, forKey: "db")
-
     }
     
 
-    
-
-    @IBAction func cangeUOM(_ sender: UISwitch) {
+    @IBAction func changeUOM(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
-        if switchMetric.isOn {
+        let lastIndex = db.bmi.count - 1
+        var weight: Float = Float(txtWeight.text!) ?? 0
+        var height: Float = Float(txtHeight.text!) ?? 0
+        if sender.isOn {
             defaults.set("metric", forKey: "UOM")
+            weight = DB.lbToKg(weight)
+            height = DB.inchToMeter(height)
+            txtWeight.text = String(weight)
+            txtHeight.text = String(height)
+            
         } else {
             defaults.set("imperial", forKey: "UOM")
+            weight = DB.kgToLb(weight)
+            height = DB.meterToInch(height)
+            txtWeight.text = String(weight)
+            txtHeight.text = String(height)
         }
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
+        
+    }
+    
+    // Function to prepare segue for Progress and Details View Controllers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? TableViewController
+        var isMetric = true
+        let UOM = UserDefaults.standard.string(forKey: "UOM") ?? ""
+        if  UOM == "imperial" {
+            isMetric = false
+        }
+        destination?.uomMetricIn = isMetric
     }
 }
-

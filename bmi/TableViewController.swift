@@ -11,6 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
     
     private static let cellIdentifier = "custom"
+    var uomMetricIn: Bool = true
     
     var db: DB = DB()
     
@@ -53,7 +54,14 @@ class TableViewController: UITableViewController {
         
         // Set text for table cell
         cell.lblDate.text = db.bmi[indexPath.row].date
-        cell.lblWeight.text = String(db.bmi[indexPath.row].weight)
+        if uomMetricIn {
+            cell.lblWeight.text = String(db.bmi[indexPath.row].weight)
+        } else {
+            let kg = db.bmi[indexPath.row].weight
+            let lb = DB.kgToLb(kg)
+            cell.lblWeight.text = String(lb)
+        }
+        
         cell.lblBmi.text = String(db.bmi[indexPath.row].bmi)
         //cell.lblQuantity.text = String(data_products[indexPath.row].quantity)
         //cell.setCategory(category: categoryIn)
@@ -113,10 +121,11 @@ class TableViewController: UITableViewController {
         let destination = segue.destination as? UpdateViewController
         let bmi = db.bmi[index!]
         destination?.bmiIn = bmi
+        destination?.uomMetricIn = uomMetricIn
     }
     
     
-    @IBAction func btnCancel(_ sender: UIBarButtonItem) {
+    @IBAction func btnBack(_ sender: UIBarButtonItem) {
         
         self.dismiss(animated: true, completion: nil)
     }
