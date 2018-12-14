@@ -42,7 +42,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="textBmi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-Ds-BNB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="txtBmi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-Ds-BNB">
                                 <rect key="frame" x="205" y="504" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Bwi-FY-MQd"/>
@@ -135,11 +135,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jll-Fq-lW1">
                                 <rect key="frame" x="20" y="617" width="95" height="30"/>
                                 <state key="normal" title="Calculate BMI"/>
+                                <connections>
+                                    <action selector="onCalculateBmi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0D6-OI-2BO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi8-P7-zmH">
                                 <rect key="frame" x="214" y="617" width="141" height="30"/>
                                 <state key="normal" title="BMI Tracking Screen"/>
                                 <connections>
+                                    <action selector="onBmiTrackingScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bA-xM-Mgm"/>
                                     <segue destination="muC-ku-ZPv" kind="show" identifier="toTable" id="4IV-td-Ojt"/>
                                 </connections>
                             </button>
@@ -204,6 +208,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="txtAge" destination="YRz-1Y-UOy" id="PJU-Rd-iPm"/>
+                        <outlet property="txtBmi" destination="ZA6-Ds-BNB" id="7sC-QI-c56"/>
+                        <outlet property="txtGender" destination="LD8-Bj-AJN" id="ipO-wm-5Le"/>
+                        <outlet property="txtHeight" destination="uzn-Nz-7wz" id="k4g-Ct-WHk"/>
+                        <outlet property="txtMessage" destination="V0I-pL-qgO" id="sOO-O3-b2X"/>
+                        <outlet property="txtName" destination="Lmi-Mu-dUj" id="Gib-SI-26D"/>
+                        <outlet property="txtWeight" destination="Rc2-nW-1EN" id="81a-6V-z3m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
