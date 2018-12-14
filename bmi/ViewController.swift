@@ -20,12 +20,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtHeight: UITextField!
     @IBOutlet weak var txtMessage: UILabel!
     @IBOutlet weak var txtBmi: UILabel!
+    @IBOutlet weak var lblWeightUom: UILabel!
+    @IBOutlet weak var lblHeightUom: UILabel!
     var db: DB = DB()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         switchMetric.setOn(true, animated: true)
+        lblWeightUom.text = "kg"
+        lblHeightUom.text = "m"
         
         update()
         
@@ -48,20 +52,18 @@ class ViewController: UIViewController {
             txtAge.text = String(db.age)
             txtGender.text = db.genderMale ? "male" : "female"
             
-            //let lastIndex = db.bmi.count - 1
-//            if lastIndex >= 0 {
-//                txtWeight.text = String(db.bmi[lastIndex].weight)
-//                txtHeight.text = String(db.bmi[lastIndex].height)
-//                txtBmi.text = String(db.bmi[lastIndex].bmi)
-//            }
             
             
             let UOM = UserDefaults.standard.string(forKey: "UOM") ?? ""
             if UOM.isEmpty {
                 switchMetric.setOn(true, animated: true)
+                lblWeightUom.text = "kg"
+                lblHeightUom.text = "m"
             } else {
                 if UOM == "imperial" {
                     switchMetric.setOn(false, animated: true)
+                    lblWeightUom.text = "lb"
+                    lblHeightUom.text = "Inch"
                 }
             }
             txtWeight.text = ""
@@ -70,17 +72,7 @@ class ViewController: UIViewController {
             txtMessage.text = ""
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
+
     @IBAction func btnCalculate(_ sender: UIButton) {
         //Date
         let date = datePicker.date
@@ -184,6 +176,8 @@ class ViewController: UIViewController {
             height = DB.inchToMeter(height)
             txtWeight.text = String(weight)
             txtHeight.text = String(height)
+            lblWeightUom.text = "kg"
+            lblHeightUom.text = "m"
             
         } else {
             defaults.set("imperial", forKey: "UOM")
@@ -191,6 +185,8 @@ class ViewController: UIViewController {
             height = DB.meterToInch(height)
             txtWeight.text = String(weight)
             txtHeight.text = String(height)
+            lblWeightUom.text = "lb"
+            lblHeightUom.text = "Inch"
         }
     }
     

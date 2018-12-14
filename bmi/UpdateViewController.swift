@@ -29,19 +29,6 @@ class UpdateViewController: UIViewController {
         lblWeight.text = String(weight)
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    
     @IBAction func btnUpdate(_ sender: UIButton) {
         for bmi in db.bmi {
             if bmi.date == bmiIn.date {
@@ -61,7 +48,8 @@ class UpdateViewController: UIViewController {
         }
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func btnCancel(_ sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIBarButtonItem) {
+        
         self.dismiss(animated: true, completion: nil)
     }
 }
